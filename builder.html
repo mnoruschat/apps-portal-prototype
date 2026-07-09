@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio — Builder (current L0)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="l0-sidebar" id="l0-sidebar">
+
+    <div class="l0-header">
+      <div class="l0-workspace-switch">
+        <svg class="l0-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M17 8.5a6 6 0 1 0 0 7" stroke-linecap="round"/>
+        </svg>
+        <span class="l0-workspace-name">Workbench</span>
+        <svg class="l0-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 9l4-4 4 4"/>
+          <path d="M8 15l4 4 4-4"/>
+        </svg>
+      </div>
+      <button class="l0-collapse-btn" id="collapse-btn" data-tooltip="Collapse navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <line x1="9" y1="5" x2="9" y2="19"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="l0-search">
+      <div class="l0-search-inner" id="search-inner">
+        <svg class="l0-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search anything..." />
+        <span class="l0-shortcut">⌘ K</span>
+      </div>
+    </div>
+
+    <nav class="l0-nav">
+      <a class="l0-nav-item active" href="#" id="nav-studio" data-tooltip="Studio">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+          <rect x="3" y="3" width="9" height="9" rx="2.5"/>
+          <rect x="12" y="12" width="9" height="9" rx="2.5"/>
+          <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="l0-nav-label">Studio</span>
+      </a>
+      <a class="l0-nav-item" href="#" data-tooltip="Context Model">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="7" cy="7" r="2.2"/>
+          <circle cx="17" cy="7" r="2.2"/>
+          <circle cx="12" cy="17" r="2.2"/>
+          <line x1="8.6" y1="8.6" x2="10.6" y2="15"/>
+          <line x1="15.4" y1="8.6" x2="13.4" y2="15"/>
+        </svg>
+        <span class="l0-nav-label">Context Model</span>
+      </a>
+      <a class="l0-nav-item" href="#" data-tooltip="Data Core">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 8c0-2.2 3.1-4 7-4s7 1.8 7 4c0 3-2.5 9-7 9S5 11 5 8z"/>
+          <path d="M9 13c.7 1 1.8 1.6 3 1.6s2.3-.6 3-1.6"/>
+        </svg>
+        <span class="l0-nav-label">Data Core</span>
+      </a>
+    </nav>
+
+    <div class="l0-divider"></div>
+
+    <div class="l0-scroll-area">
+      <nav class="l0-nav">
+        <a class="l0-nav-item" href="#">
+          <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="5" cy="12" r="1.6"/>
+            <circle cx="12" cy="12" r="1.6"/>
+            <circle cx="19" cy="12" r="1.6"/>
+          </svg>
+          <span class="l0-nav-label">More</span>
+        </a>
+      </nav>
+
+      <div class="l0-starred">
+        <span class="l0-starred-label">Starred</span>
+      </div>
+    </div>
+
+    <div class="l0-footer">
+      <div class="l0-avatar">M</div>
+      <div class="l0-profile-info">
+        <span class="l0-profile-name">m.noruschat</span>
+        <span class="l0-profile-role">Admin</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+    <div class="main-header">
+      <div class="header-pill" id="header-pill">
+        <span class="breadcrumb-root" id="breadcrumb-root">Studio</span>
+      </div>
+
+      <div class="header-right">
+        <a class="hbtn" href="apps.html" target="_blank" rel="noopener">
+          <span>Open Apps</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <path d="M15 3h6v6"/>
+            <path d="M10 14L21 3"/>
+          </svg>
+        </a>
+
+        <div class="header-search-box">
+          <input type="text" placeholder="Search" />
+          <span class="header-search-shortcut">⌘ /</span>
+        </div>
+
+        <button class="hicon-btn" title="Delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h16"/>
+            <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+            <path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12"/>
+            <path d="M10 11v6"/>
+            <path d="M14 11v6"/>
+          </svg>
+        </button>
+
+        <button class="hicon-btn" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h0A1.7 1.7 0 0 0 10 3.09V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v0a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/>
+          </svg>
+        </button>
+
+        <button class="hbtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          <span id="create-btn-label">Create space</span>
+        </button>
+      </div>
+    </div>
+    <div class="main-body">
+
+      <div id="space-list-view">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span class="toolbar-title">All spaces (163)</span>
+          <button class="chip-btn chip-active">
+            Name
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 15V7"/>
+              <path d="M4 10l3-3l3 3"/>
+              <path d="M17 9v8"/>
+              <path d="M20 14l-3 3l-3-3"/>
+            </svg>
+          </button>
+          <button class="chip-btn chip-inactive">Last viewed</button>
+        </div>
+        <div class="view-toggle">
+          <button class="view-toggle-btn" title="Grid view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+              <rect x="3" y="3" width="8" height="8" rx="1.5"/>
+              <rect x="13" y="3" width="8" height="8" rx="1.5"/>
+              <rect x="3" y="13" width="8" height="8" rx="1.5"/>
+              <rect x="13" y="13" width="8" height="8" rx="1.5"/>
+            </svg>
+          </button>
+          <button class="view-toggle-btn active" title="List view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <colgroup>
+          <col class="col-name" />
+          <col class="col-description" />
+          <col class="col-packages" />
+          <col class="col-perspectives" />
+          <col class="col-actions" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Number of packages</th>
+            <th>Suggested Perspectives</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr data-space-name="_Albnor" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>_Albnor</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>28</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="[DO NOT DELETE] Radwan's Testing Space" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>[DO NOT DELETE] Radwan's Testing Space</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>3</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="[PX] Laura's Space" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>[PX] Laura's Space</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td>
+              <span class="perspective-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                <span>test:perspective_...</span>
+              </span>
+            </td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="aangele" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>aangele</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Aaron G" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Aaron G</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>5</td>
+            <td>
+              <span class="perspective-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                <span>perspective_cust...</span>
+              </span>
+              <span class="perspective-more">+1</span>
+            </td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="ABC" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>ABC</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td>
+              <span class="perspective-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                <span>test:perspective_...</span>
+              </span>
+            </td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Admir_Test" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Admir_Test</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Agent Workbench test [40Grados]" data-icon-type="workbench">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+                <span>Agent Workbench test [40Grados]</span>
+              </div>
+            </td>
+            <td class="desc-cell">This is a package to make test over the w...</td>
+            <td>9</td>
+            <td>
+              <span class="perspective-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                <span>Coffee Shop</span>
+              </span>
+            </td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Akhil's Playgnd" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Akhil's Playgnd</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Albin package" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Albin package</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>7</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Alessandro Test" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Alessandro Test</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>2</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="AlexS Studio Space" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>AlexS Studio Space</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>2</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+          <tr data-space-name="Alina's Space" data-icon-type="space">
+            <td>
+              <div class="name-cell">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+                <span>Alina's Space</span>
+              </div>
+            </td>
+            <td class="desc-cell">-</td>
+            <td>1</td>
+            <td></td>
+            <td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+
+      <div id="space-detail-view" hidden>
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span class="toolbar-title">All packages (28)</span>
+          <button class="chip-btn chip-active">
+            Name
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 15V7"/>
+              <path d="M4 10l3-3l3 3"/>
+              <path d="M17 9v8"/>
+              <path d="M20 14l-3 3l-3-3"/>
+            </svg>
+          </button>
+          <button class="chip-btn chip-inactive">Last viewed</button>
+          <button class="chip-btn chip-inactive">
+            Created by: All
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <button class="chip-btn chip-inactive">
+            Perspectives:
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="view-toggle">
+          <button class="view-toggle-btn" title="Grid view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+              <rect x="3" y="3" width="8" height="8" rx="1.5"/>
+              <rect x="13" y="3" width="8" height="8" rx="1.5"/>
+              <rect x="3" y="13" width="8" height="8" rx="1.5"/>
+              <rect x="13" y="13" width="8" height="8" rx="1.5"/>
+            </svg>
+          </button>
+          <button class="view-toggle-btn active" title="List view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <colgroup>
+          <col class="col-name" />
+          <col class="col-description" />
+          <col class="col-packages" />
+          <col class="col-perspectives" />
+          <col class="col-actions" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Last viewed</th>
+            <th>Perspectives</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>AGENT PIG flagtest DP</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>ConsumptionWithPermissions</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>emptyPack</span></div></td><td class="desc-cell">-</td><td>a month ago</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>ErinConsumption</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>Hello world</span></div></td><td class="desc-cell">-</td><td>28 days ago</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>MyCoffeeShop</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>myCoffeeShopSolution</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>MYEXTRAPACK</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+          <tr><td><div class="name-cell"><svg class="expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg><span>NewDemoPackage3</span></div></td><td class="desc-cell">-</td><td>Not viewed</td><td></td><td><button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const collapseBtn = document.getElementById('collapse-btn');
+  const sidebar = document.getElementById('l0-sidebar');
+  const searchInner = document.getElementById('search-inner');
+  const searchInput = document.getElementById('search-input');
+
+  function setCollapsed(collapsed) {
+    sidebar.classList.toggle('collapsed', collapsed);
+    collapseBtn.setAttribute('data-tooltip', collapsed ? 'Expand navigation' : 'Collapse navigation');
+  }
+
+  collapseBtn.addEventListener('click', () => {
+    setCollapsed(!sidebar.classList.contains('collapsed'));
+  });
+
+  searchInner.addEventListener('click', () => {
+    if (sidebar.classList.contains('collapsed')) {
+      setCollapsed(false);
+      searchInput.focus();
+    }
+  });
+
+  // ---- Space selection: breadcrumb header + Create space -> Create package ----
+  const headerPill = document.getElementById('header-pill');
+  const createBtnLabel = document.getElementById('create-btn-label');
+  const spaceListView = document.getElementById('space-list-view');
+  const spaceDetailView = document.getElementById('space-detail-view');
+
+  const icons = {
+    space: '<svg class="breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>',
+    workbench: '<svg class="breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>'
+  };
+
+  function showStudioRoot() {
+    headerPill.innerHTML = '<span class="breadcrumb-root" id="breadcrumb-root">Studio</span>';
+    document.getElementById('breadcrumb-root').addEventListener('click', showStudioRoot);
+    createBtnLabel.textContent = 'Create space';
+    spaceListView.hidden = false;
+    spaceDetailView.hidden = true;
+  }
+
+  function selectSpace(name, iconType) {
+    headerPill.innerHTML = `
+      <span class="breadcrumb-root" id="breadcrumb-root">Studio</span>
+      <svg class="breadcrumb-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="breadcrumb-current">
+        ${icons[iconType] || icons.space}
+        <span>${name}</span>
+      </span>
+      <svg class="breadcrumb-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    `;
+    document.getElementById('breadcrumb-root').addEventListener('click', showStudioRoot);
+    createBtnLabel.textContent = 'Create package';
+    spaceListView.hidden = true;
+    spaceDetailView.hidden = false;
+  }
+
+  document.getElementById('breadcrumb-root').addEventListener('click', showStudioRoot);
+
+  document.getElementById('nav-studio').addEventListener('click', (e) => {
+    e.preventDefault();
+    showStudioRoot();
+  });
+
+  document.querySelectorAll('#space-list-view .data-table tbody tr').forEach((row) => {
+    row.addEventListener('click', () => {
+      selectSpace(row.dataset.spaceName, row.dataset.iconType);
+    });
+  });
+
+  // Selecting a package opens the builder/IDE experience for that asset
+  document.querySelectorAll('#space-detail-view .data-table tbody tr').forEach((row) => {
+    row.addEventListener('click', () => {
+      window.location.href = 'ide.html';
+    });
+  });
+</script>
+
+</body>
+</html>

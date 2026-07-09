@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apps</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="apps-shell">
+
+  <header class="apps-topbar">
+    <div class="apps-topbar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M17 8.5a6 6 0 1 0 0 7" stroke-linecap="round"/>
+      </svg>
+      <span>Apps</span>
+    </div>
+    <div class="l0-avatar" style="width:30px;height:30px;font-size:12px;">M</div>
+  </header>
+
+  <main class="apps-hero">
+    <div class="apps-hero-inner">
+
+      <h1 class="apps-welcome">Welcome, Mika</h1>
+
+      <div class="apps-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" placeholder="Search assets..." />
+      </div>
+
+      <div class="apps-filters">
+        <button class="chip-btn chip-active" id="filter-all">All</button>
+        <button class="chip-btn chip-inactive" id="filter-favorites">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 17l-5.6 3.1 1.4-6.3-4.8-4.3 6.4-.6L12 3z"/></svg>
+          Favorites
+        </button>
+        <button class="chip-btn chip-inactive" id="filter-recent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Recently Opened
+        </button>
+      </div>
+
+      <div class="apps-asset-list">
+        <table class="apps-table">
+          <colgroup>
+            <col class="apps-col-name" />
+            <col class="apps-col-description" />
+            <col class="apps-col-lastviewed" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Last viewed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-favorite="true" data-recent="true">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Q3 Revenue Dashboard</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">Revenue trends and forecasts across all regions</td>
+              <td class="apps-lastviewed-cell">2 hours ago</td>
+            </tr>
+            <tr data-favorite="false" data-recent="true">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Order-to-Cash Overview</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">End-to-end O2C process health and bottlenecks</td>
+              <td class="apps-lastviewed-cell">Yesterday</td>
+            </tr>
+            <tr data-favorite="true" data-recent="true">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Supply Chain KPIs</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">Key supply chain performance indicators</td>
+              <td class="apps-lastviewed-cell">3 days ago</td>
+            </tr>
+            <tr data-favorite="false" data-recent="false">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Customer Escalations Report</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">Open and resolved escalation cases by team</td>
+              <td class="apps-lastviewed-cell">A week ago</td>
+            </tr>
+            <tr data-favorite="false" data-recent="false">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Procurement Spend Analysis</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">Spend breakdown by vendor and category</td>
+              <td class="apps-lastviewed-cell">2 weeks ago</td>
+            </tr>
+            <tr data-favorite="false" data-recent="false">
+              <td>
+                <div class="apps-name-cell">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+                  <span>Monthly Close Checklist</span>
+                </div>
+              </td>
+              <td class="apps-desc-cell">Status of month-end close tasks</td>
+              <td class="apps-lastviewed-cell">Not viewed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="apps-load-more">
+        <button class="apps-load-more-btn" id="load-more-btn">Show more</button>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const allBtn = document.getElementById('filter-all');
+  const favBtn = document.getElementById('filter-favorites');
+  const recentBtn = document.getElementById('filter-recent');
+  const filterBtns = [allBtn, favBtn, recentBtn];
+  const tableBody = document.querySelector('.apps-table tbody');
+
+  let currentMode = 'all';
+
+  function applyFilterToRows() {
+    document.querySelectorAll('.apps-table tbody tr').forEach((row) => {
+      if (currentMode === 'favorites') {
+        row.style.display = row.dataset.favorite === 'true' ? '' : 'none';
+      } else if (currentMode === 'recent') {
+        row.style.display = row.dataset.recent === 'true' ? '' : 'none';
+      } else {
+        row.style.display = '';
+      }
+    });
+  }
+
+  function setFilter(mode) {
+    currentMode = mode;
+    filterBtns.forEach((btn) => {
+      const isActive = btn.dataset.mode === mode;
+      btn.classList.toggle('chip-active', isActive);
+      btn.classList.toggle('chip-inactive', !isActive);
+    });
+    applyFilterToRows();
+  }
+
+  allBtn.dataset.mode = 'all';
+  favBtn.dataset.mode = 'favorites';
+  recentBtn.dataset.mode = 'recent';
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => setFilter(btn.dataset.mode));
+  });
+
+  // Selecting an asset opens it in the asset view
+  tableBody.addEventListener('click', (e) => {
+    if (e.target.closest('tr')) {
+      window.location.href = 'asset-view.html';
+    }
+  });
+
+  // ---- Load more: append another batch of assets ----
+  const assetIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>';
+
+  const moreAssets = [
+    { name: 'Vendor Onboarding Times', desc: 'Average onboarding duration by vendor category', lastViewed: '3 weeks ago', favorite: false, recent: false },
+    { name: 'Invoice Exception Handling', desc: 'Root causes for held and blocked invoices', lastViewed: 'A month ago', favorite: false, recent: false },
+    { name: 'Warehouse Throughput', desc: 'Inbound and outbound throughput by warehouse', lastViewed: 'Not viewed', favorite: false, recent: false },
+    { name: 'Customer Churn Signals', desc: 'Early indicators of churn risk by account', lastViewed: '5 days ago', favorite: true, recent: true },
+    { name: 'HR Onboarding Funnel', desc: 'New hire onboarding completion rates', lastViewed: 'Not viewed', favorite: false, recent: false },
+    { name: 'IT Ticket Backlog', desc: 'Open IT tickets by priority and age', lastViewed: '2 months ago', favorite: false, recent: false }
+  ];
+
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  let extraRows = [];
+  let expanded = false;
+
+  loadMoreBtn.addEventListener('click', () => {
+    if (!expanded) {
+      extraRows = moreAssets.map((asset) => {
+        const row = document.createElement('tr');
+        row.dataset.favorite = String(asset.favorite);
+        row.dataset.recent = String(asset.recent);
+        row.innerHTML = `
+          <td>
+            <div class="apps-name-cell">
+              ${assetIcon}
+              <span>${asset.name}</span>
+            </div>
+          </td>
+          <td class="apps-desc-cell">${asset.desc}</td>
+          <td class="apps-lastviewed-cell">${asset.lastViewed}</td>
+        `;
+        tableBody.appendChild(row);
+        return row;
+      });
+
+      applyFilterToRows();
+      loadMoreBtn.textContent = 'Show less';
+      expanded = true;
+    } else {
+      extraRows.forEach((row) => row.remove());
+      extraRows = [];
+      loadMoreBtn.textContent = 'Show more';
+      expanded = false;
+    }
+  });
+</script>
+
+</body>
+</html>

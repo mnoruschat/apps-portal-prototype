@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio — IDE (asset editor)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="l0-sidebar collapsed" id="l0-sidebar">
+
+    <div class="l0-header">
+      <div class="l0-workspace-switch">
+        <svg class="l0-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M17 8.5a6 6 0 1 0 0 7" stroke-linecap="round"/>
+        </svg>
+        <span class="l0-workspace-name">Workbench</span>
+        <svg class="l0-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 9l4-4 4 4"/>
+          <path d="M8 15l4 4 4-4"/>
+        </svg>
+      </div>
+      <button class="l0-collapse-btn" id="collapse-btn" data-tooltip="Expand navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <line x1="9" y1="5" x2="9" y2="19"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="l0-search">
+      <div class="l0-search-inner" id="search-inner">
+        <svg class="l0-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search anything..." />
+        <span class="l0-shortcut">⌘ K</span>
+      </div>
+    </div>
+
+    <nav class="l0-nav">
+      <a class="l0-nav-item active" href="builder.html" id="nav-studio" data-tooltip="Studio">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+          <rect x="3" y="3" width="9" height="9" rx="2.5"/>
+          <rect x="12" y="12" width="9" height="9" rx="2.5"/>
+          <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="l0-nav-label">Studio</span>
+      </a>
+      <a class="l0-nav-item" href="#" data-tooltip="Context Model">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="7" cy="7" r="2.2"/>
+          <circle cx="17" cy="7" r="2.2"/>
+          <circle cx="12" cy="17" r="2.2"/>
+          <line x1="8.6" y1="8.6" x2="10.6" y2="15"/>
+          <line x1="15.4" y1="8.6" x2="13.4" y2="15"/>
+        </svg>
+        <span class="l0-nav-label">Context Model</span>
+      </a>
+      <a class="l0-nav-item" href="#" data-tooltip="Data Core">
+        <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 8c0-2.2 3.1-4 7-4s7 1.8 7 4c0 3-2.5 9-7 9S5 11 5 8z"/>
+          <path d="M9 13c.7 1 1.8 1.6 3 1.6s2.3-.6 3-1.6"/>
+        </svg>
+        <span class="l0-nav-label">Data Core</span>
+      </a>
+    </nav>
+
+    <div class="l0-divider"></div>
+
+    <div class="l0-scroll-area">
+      <nav class="l0-nav">
+        <a class="l0-nav-item" href="#">
+          <svg class="l0-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="5" cy="12" r="1.6"/>
+            <circle cx="12" cy="12" r="1.6"/>
+            <circle cx="19" cy="12" r="1.6"/>
+          </svg>
+          <span class="l0-nav-label">More</span>
+        </a>
+      </nav>
+
+      <div class="l0-starred">
+        <span class="l0-starred-label">Starred</span>
+      </div>
+    </div>
+
+    <div class="l0-footer">
+      <div class="l0-avatar">M</div>
+      <div class="l0-profile-info">
+        <span class="l0-profile-name">m.noruschat</span>
+        <span class="l0-profile-role">Admin</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <div class="ide-shell">
+
+  <!-- ---------- Top bar: breadcrumb + global actions ---------- -->
+  <div class="ide-topbar">
+    <div class="ide-breadcrumb">
+      <span class="ide-crumb static" id="crumb-studio">Studio</span>
+      <svg class="ide-crumb-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+
+      <span class="ide-crumb" id="crumb-space">
+        <svg class="crumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/><circle cx="12" cy="12" r="4.5"/></svg>
+        <span>_Albnor</span>
+      </span>
+      <svg class="ide-crumb-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+
+      <span class="ide-crumb static">
+        <svg class="crumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><circle cx="12" cy="11" r="2.3"/></svg>
+        <span>NewTestPackage</span>
+        <svg class="crumb-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+      <svg class="ide-crumb-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+
+      <span class="ide-crumb static">
+        <svg class="crumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="6" cy="6" r="2.1"/><circle cx="6" cy="18" r="2.1"/><circle cx="17.5" cy="9" r="2.1"/>
+          <path d="M6 8.1V15.9"/>
+          <path d="M6 8.1c0 3 3 4 6 4h3.7"/>
+        </svg>
+        <span>main</span>
+        <svg class="crumb-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+
+      <button class="ide-favorite-btn" title="Favorite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.2 6.5 20.2l1-6.2-4.5-4.4 6.2-.9L12 3z"/></svg>
+      </button>
+    </div>
+
+    <div class="ide-topbar-right">
+      <div class="header-search-box">
+        <input type="text" placeholder="Search" />
+        <span class="header-search-shortcut">⌘ /</span>
+      </div>
+
+      <button class="hicon-btn" title="Validation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+      </button>
+
+      <button class="count-btn" title="Environments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4"/></svg>
+        1
+      </button>
+
+      <button class="status-pill">
+        <span class="status-dot"></span>
+        Draft
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+
+      <button class="btn-primary">Deploy</button>
+    </div>
+  </div>
+
+  <!-- ---------- Tab bar ---------- -->
+  <div class="ide-tabbar">
+    <div class="ide-tabbar-sidebar-slot">
+      <button class="new-asset-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        New asset
+      </button>
+      <button class="tabbar-icon-btn" title="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="tabbar-icon-btn" title="Filter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="1.8" fill="currentColor" stroke="none"/>
+          <line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="1.8" fill="currentColor" stroke="none"/>
+          <line x1="4" y1="18" x2="20" y2="18"/><circle cx="7" cy="18" r="1.8" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ide-tabbar-main">
+      <button class="tabbar-icon-btn" title="Toggle panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="9" y1="5" x2="9" y2="19"/></svg>
+      </button>
+
+      <div class="asset-tab">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+        <span>xiao</span>
+        <span class="tab-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span>
+      </div>
+
+      <span style="flex:1;"></span>
+
+      <button class="tabbar-icon-btn" title="Toggle right panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="15" y1="5" x2="15" y2="19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ---------- Body: package sidebar + asset canvas ---------- -->
+  <div class="ide-body-row">
+
+    <aside class="ide-sidebar">
+      <nav class="ide-nav">
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+          <span>Browse Context Model</span>
+        </a>
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 3v18"/><path d="M4 7.5l8 4.5 8-4.5"/></svg>
+          <span>AI Builder</span>
+        </a>
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+          <span>All Events</span>
+        </a>
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+          <span>More</span>
+        </a>
+      </nav>
+
+      <div class="ide-section-label">Data &amp; Process Modeling</div>
+      <nav class="ide-nav">
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4z"/><circle cx="12" cy="12" r="2"/></svg>
+          <span>Knowledge Model ...</span>
+          <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+
+      <div class="ide-section-label">Dashboards</div>
+      <nav class="ide-nav">
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          <span>View (1)</span>
+          <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+        </a>
+      </nav>
+      <div class="ide-nav-children">
+        <div class="ide-nav-child active">
+          <span>xiao</span>
+          <button class="row-more-btn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button>
+        </div>
+      </div>
+
+      <div class="ide-sidebar-spacer"></div>
+
+      <div class="ide-sidebar-footer">
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h0A1.7 1.7 0 0 0 10 3.09V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v0a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg>
+          <span>Package Settings</span>
+        </a>
+        <a class="ide-nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>History</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="ide-main">
+
+      <div class="asset-header">
+        <span class="asset-title">xiao</span>
+
+        <div class="asset-header-icons">
+          <button class="asset-header-icon-btn" title="Bookmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>
+          </button>
+          <div class="dropdown-wrap">
+            <button class="asset-header-icon-btn" title="Share" id="share-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+            </button>
+            <div class="dropdown-menu" id="share-menu">
+              <a class="dropdown-item" href="asset-view.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+                <span>Open in Apps</span>
+              </a>
+              <div class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="19" r="2.2"/><line x1="8.1" y1="10.9" x2="15.9" y2="6.1"/><line x1="8.1" y1="13.1" x2="15.9" y2="17.9"/></svg>
+                <span>Share link to this View</span>
+              </div>
+              <div class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="16.5" x2="13" y2="16.5"/></svg>
+                <span>Export PDF</span>
+              </div>
+              <div class="dropdown-item disabled">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+                <span>Schedule report</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-item disabled">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="20"/></svg>
+                <span>Manage all reports</span>
+              </div>
+            </div>
+          </div>
+          <button class="asset-header-icon-btn" title="Duplicate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/></svg>
+          </button>
+          <button class="asset-header-icon-btn" title="Activity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="7" x2="10" y2="17"/><line x1="14" y1="4" x2="14" y2="20"/><line x1="18" y1="9" x2="18" y2="15"/></svg>
+          </button>
+        </div>
+
+        <div class="asset-header-spacer"></div>
+
+        <div class="segmented-control">
+          <span class="segmented-option">Compact</span>
+          <span class="segmented-option active">Standard</span>
+          <span class="segmented-option">Relaxed</span>
+        </div>
+
+        <div class="asset-header-spacer"></div>
+
+        <div class="asset-header-trailing">
+          <div class="percent-badge" title="Completeness">100%</div>
+          <div class="badge-wrap" title="Collaborators">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 3v18"/><path d="M5 4h13l-3 4 3 4H5"/></svg>
+            <span class="badge-count">0</span>
+          </div>
+          <button class="edit-btn" title="Edit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="asset-tabs">
+        <span class="asset-view-tab active">New tab 1</span>
+        <span class="asset-view-tab">New tab 2</span>
+      </div>
+
+      <div class="asset-canvas">
+        <div class="metric-card">
+          <div class="metric-label">Count</div>
+          <div class="metric-value">4</div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  </div>
+
+</div>
+
+<script>
+  const collapseBtn = document.getElementById('collapse-btn');
+  const sidebar = document.getElementById('l0-sidebar');
+  const searchInner = document.getElementById('search-inner');
+  const searchInput = document.getElementById('search-input');
+
+  function setCollapsed(collapsed) {
+    sidebar.classList.toggle('collapsed', collapsed);
+    collapseBtn.setAttribute('data-tooltip', collapsed ? 'Expand navigation' : 'Collapse navigation');
+  }
+
+  collapseBtn.addEventListener('click', () => {
+    setCollapsed(!sidebar.classList.contains('collapsed'));
+  });
+
+  searchInner.addEventListener('click', () => {
+    if (sidebar.classList.contains('collapsed')) {
+      setCollapsed(false);
+      searchInput.focus();
+    }
+  });
+
+  document.getElementById('crumb-studio').addEventListener('click', () => {
+    window.location.href = 'builder.html';
+  });
+  document.getElementById('crumb-space').addEventListener('click', () => {
+    window.location.href = 'builder.html';
+  });
+
+  // ---- Share dropdown ----
+  const shareBtn = document.getElementById('share-btn');
+  const shareMenu = document.getElementById('share-menu');
+
+  shareBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    shareMenu.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!shareMenu.contains(e.target) && e.target !== shareBtn) {
+      shareMenu.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
