@@ -1739,6 +1739,56 @@ html, body {
   white-space: nowrap;
 }
 
+/* Folder (package) grouping rows */
+
+.apps-folder-row td {
+  padding: 11px 18px;
+}
+
+.apps-folder-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.apps-folder-chevron {
+  width: 13px;
+  height: 13px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: transform 0.12s ease;
+}
+
+.apps-folder-row.expanded .apps-folder-chevron {
+  transform: rotate(90deg);
+}
+
+.apps-folder-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.apps-folder-cell span.apps-folder-name {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.apps-folder-count {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 12.5px;
+  flex-shrink: 0;
+}
+
+.apps-row-child td:first-child {
+  padding-left: 46px;
+}
+
 .apps-load-more {
   width: 100%;
   display: flex;
