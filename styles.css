@@ -1858,12 +1858,46 @@ html, body {
   width: 56px;
 }
 
+.av-nav-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 2px 12px;
+  cursor: pointer;
+}
+
+.av-nav-sidebar.collapsed .av-nav-brand {
+  justify-content: center;
+  padding: 12px 8px 2px 8px;
+}
+
+.av-nav-brand-icon-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.av-nav-brand:hover .av-nav-brand-icon-wrap {
+  background: var(--hover-bg);
+}
+
+.av-nav-brand-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
 .av-nav-header {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 12px 10px 10px 10px;
+  padding: 8px 10px 10px 10px;
 }
 
 .av-nav-sidebar.collapsed .av-nav-header {
@@ -1883,7 +1917,7 @@ html, body {
 }
 
 .av-nav-sidebar.collapsed .av-nav-search-box {
-  flex: 0;
+  flex: 0 0 auto;
   border-color: transparent;
   background: transparent;
   padding: 8px;
@@ -1940,11 +1974,70 @@ html, body {
   height: 16px;
 }
 
-.av-nav-sidebar.collapsed .av-nav-collapse-btn {
+/* ---------- Tabs: All / Favorites / Recents ---------- */
+
+.av-nav-tabs {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--border-color);
+  border-radius: 8px;
+  padding: 2px;
+  margin: 2px 10px 10px 10px;
+}
+
+.av-nav-sidebar.collapsed .av-nav-tabs {
   display: none;
 }
 
+.av-nav-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 4px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.av-nav-tab:hover {
+  color: var(--text-primary);
+}
+
+.av-nav-tab.active {
+  background: #ffffff;
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(20, 20, 50, 0.08);
+}
+
+/* Panels: only the active tab's panel is shown. Collapsed sidebar always shows "All"
+   regardless of the active tab (Favorites/Recents don't make sense as an icon-only rail). */
+.av-nav-panel-hidden {
+  display: none !important;
+}
+
+.av-nav-sidebar.collapsed [data-tab-panel] {
+  display: none !important;
+}
+
+.av-nav-sidebar.collapsed [data-tab-panel="all"] {
+  display: flex !important;
+}
+
 .av-nav-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 10px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.av-nav-list {
   flex: 1;
   overflow-y: auto;
   padding: 2px 10px 12px 10px;
@@ -2010,9 +2103,15 @@ html, body {
 
 .av-nav-sidebar.collapsed .av-nav-folder-chevron,
 .av-nav-sidebar.collapsed .av-nav-folder-name,
-.av-nav-sidebar.collapsed .av-nav-folder-count,
-.av-nav-sidebar.collapsed .av-nav-asset {
+.av-nav-sidebar.collapsed .av-nav-folder-count {
   display: none;
+}
+
+/* !important: overrides the inline display:flex/none that the expand/collapse
+   and search JS sets directly on .av-nav-asset rows, so collapsing the whole
+   sidebar always hides asset rows regardless of a folder's expanded state. */
+.av-nav-sidebar.collapsed .av-nav-asset {
+  display: none !important;
 }
 
 .av-nav-asset {
@@ -2029,6 +2128,11 @@ html, body {
 
 .av-nav-asset:hover {
   background: var(--hover-bg);
+}
+
+/* Recents is a flat list — no folder to nest under, so drop the indent. */
+.av-nav-asset-flat {
+  padding-left: 8px;
 }
 
 .av-nav-asset.active {

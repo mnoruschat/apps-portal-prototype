@@ -12,6 +12,14 @@
 
   <aside class="av-nav-sidebar" id="av-nav-sidebar">
 
+    <a class="av-nav-brand" href="apps.html" title="Home" data-tooltip="Home">
+      <span class="av-nav-brand-icon-wrap">
+        <svg class="av-nav-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M17 8.5a6 6 0 1 0 0 7" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </a>
+
     <div class="av-nav-header">
       <div class="av-nav-search-box" id="av-nav-search-box" data-tooltip="Search assets">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -22,7 +30,13 @@
       </button>
     </div>
 
-    <nav class="av-nav-tree" id="av-nav-tree">
+    <div class="av-nav-tabs">
+      <button class="av-nav-tab active" data-tab="all">All</button>
+      <button class="av-nav-tab" data-tab="favorites">Favorites</button>
+      <button class="av-nav-tab" data-tab="recents">Recents</button>
+    </div>
+
+    <nav class="av-nav-tree" id="av-nav-tree" data-tab-panel="all">
 
       <div class="av-nav-folder" data-folder-id="finance" data-tooltip="Finance Reporting">
         <svg class="av-nav-folder-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
@@ -71,16 +85,55 @@
 
     </nav>
 
+    <nav class="av-nav-tree av-nav-panel-hidden" data-tab-panel="favorites">
+
+      <div class="av-nav-folder" data-folder-id="fav-finance" data-tooltip="Finance Reporting">
+        <svg class="av-nav-folder-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <svg class="av-nav-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+        <span class="av-nav-folder-name">Finance Reporting</span>
+        <span class="av-nav-folder-count">1</span>
+      </div>
+      <div class="av-nav-asset active" data-folder="fav-finance" data-asset-name="Q3 Revenue Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+        <span>Q3 Revenue Dashboard</span>
+      </div>
+
+      <div class="av-nav-folder" data-folder-id="fav-supply-chain" data-tooltip="Supply Chain &amp; Procurement">
+        <svg class="av-nav-folder-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <svg class="av-nav-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+        <span class="av-nav-folder-name">Supply Chain &amp; Procurement</span>
+        <span class="av-nav-folder-count">1</span>
+      </div>
+      <div class="av-nav-asset" data-folder="fav-supply-chain" data-asset-name="Supply Chain KPIs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+        <span>Supply Chain KPIs</span>
+      </div>
+
+    </nav>
+
+    <div class="av-nav-list av-nav-panel-hidden" data-tab-panel="recents">
+
+      <div class="av-nav-asset av-nav-asset-flat" data-asset-name="Q3 Revenue Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+        <span>Q3 Revenue Dashboard</span>
+      </div>
+      <div class="av-nav-asset av-nav-asset-flat" data-asset-name="Order-to-Cash Overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+        <span>Order-to-Cash Overview</span>
+      </div>
+      <div class="av-nav-asset av-nav-asset-flat" data-asset-name="Supply Chain KPIs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="1.5"/><path d="M4 7l3-4h10l3 4"/></svg>
+        <span>Supply Chain KPIs</span>
+      </div>
+
+    </div>
+
   </aside>
 
   <div class="av-page">
 
   <header class="av-topbar">
-    <div class="av-topbar-left">
-      <a class="av-home-btn" href="apps.html" title="Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9"/></svg>
-      </a>
-    </div>
+    <div class="av-topbar-left"></div>
     <div class="av-topbar-right">
       <div class="header-search-box">
         <input type="text" placeholder="Search" />
@@ -197,11 +250,15 @@
   });
 
   // ---- Folder expand/collapse (mirrors apps.html behavior) ----
+  // Note: .av-nav-asset/.av-nav-folder set an explicit `display: flex` in CSS, which
+  // (being an author-stylesheet rule) overrides the browser's default `[hidden]` styling.
+  // So visibility here is toggled via inline `style.display`, not the `hidden` attribute.
   function setFolderExpanded(folderRow, expand) {
     folderRow.classList.toggle('expanded', expand);
     const folderId = folderRow.dataset.folderId;
     document.querySelectorAll(`.av-nav-asset[data-folder="${folderId}"]`).forEach((row) => {
-      row.hidden = !(expand && row.dataset.searchMatch !== 'false');
+      const visible = expand && row.dataset.searchMatch !== 'false';
+      row.style.display = visible ? 'flex' : 'none';
     });
   }
 
@@ -218,23 +275,37 @@
     });
   });
 
-  // The asset that's open by default lives in "finance" — start with that folder expanded.
-  const defaultFolder = document.querySelector('.av-nav-folder[data-folder-id="finance"]');
-  defaultFolder.dataset.manualExpanded = 'true';
-  setFolderExpanded(defaultFolder, true);
+  // The asset that's open by default lives in "finance" (and its Favorites counterpart,
+  // "fav-finance") — start with those folders expanded so the active asset is visible.
+  ['finance', 'fav-finance'].forEach((folderId) => {
+    const defaultFolder = document.querySelector(`.av-nav-folder[data-folder-id="${folderId}"]`);
+    defaultFolder.dataset.manualExpanded = 'true';
+    setFolderExpanded(defaultFolder, true);
+  });
 
   const assetTitle = document.getElementById('av-asset-title');
 
   assetRows.forEach((row) => {
     row.addEventListener('click', () => {
-      assetRows.forEach((r) => r.classList.remove('active'));
-      row.classList.add('active');
-      assetTitle.textContent = row.dataset.assetName;
-      document.title = `${row.dataset.assetName} — Apps`;
+      // The same asset can appear in multiple places (Favorites, Recently Opened,
+      // and its package folder) — keep all of them highlighted together.
+      const name = row.dataset.assetName;
+      assetRows.forEach((r) => r.classList.toggle('active', r.dataset.assetName === name));
+      assetTitle.textContent = name;
+      document.title = `${name} — Apps`;
     });
   });
 
+  // Sync the initial active state across any duplicate entries (Favorites/Recently Opened).
+  const initialActive = document.querySelector('.av-nav-asset.active');
+  if (initialActive) {
+    const initialName = initialActive.dataset.assetName;
+    assetRows.forEach((r) => r.classList.toggle('active', r.dataset.assetName === initialName));
+  }
+
   // ---- Search: filter folders/assets by name, auto-expanding matches ----
+  const flatAssetRows = document.querySelectorAll('.av-nav-asset-flat');
+
   navSearchInput.addEventListener('input', () => {
     const query = navSearchInput.value.trim().toLowerCase();
 
@@ -251,12 +322,32 @@
       });
 
       if (query === '') {
-        folderRow.hidden = false;
+        folderRow.style.display = '';
         setFolderExpanded(folderRow, folderRow.dataset.manualExpanded === 'true');
       } else {
-        folderRow.hidden = !anyMatch;
+        folderRow.style.display = anyMatch ? '' : 'none';
         setFolderExpanded(folderRow, anyMatch);
       }
+    });
+
+    // Recents is a flat list (no folders to auto-expand) — just filter by name directly.
+    flatAssetRows.forEach((row) => {
+      const matches = query === '' || row.dataset.assetName.toLowerCase().includes(query);
+      row.style.display = matches ? 'flex' : 'none';
+    });
+  });
+
+  // ---- Tabs: All / Favorites / Recents ----
+  const navTabs = document.querySelectorAll('.av-nav-tab');
+  const navPanels = document.querySelectorAll('[data-tab-panel]');
+
+  navTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      navTabs.forEach((t) => t.classList.toggle('active', t === tab));
+      const target = tab.dataset.tab;
+      navPanels.forEach((panel) => {
+        panel.classList.toggle('av-nav-panel-hidden', panel.dataset.tabPanel !== target);
+      });
     });
   });
 </script>
